@@ -1,5 +1,6 @@
-import {Categories_E} from '../categories_E';
+import {SelectedCategories_E} from '../enums/SelectedCategories_E';
+import {CompletedCategories_E} from '../enums/completed_E';
 
 export type TodoListItem = {
-  id: number, text: string, title: string, isDone: boolean, category: Categories_E
+  id: number, title: string, completed: CompletedCategories_E, category: SelectedCategories_E
 };

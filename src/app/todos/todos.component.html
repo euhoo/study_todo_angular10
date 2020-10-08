@@ -1,7 +1,7 @@
 <ul>
-  <li *ngFor="let todo of appStoreService.todos | todoFilter:appStoreService.selectedCategory">
+  <li *ngFor="let todo of appStoreService.todos | todoFilter:appStoreService.selectedCategory:appStoreService.completedCategory">
     <span>
-    {{todo.title}}: {{todo.text}}
+    {{todo.title}}
       <button (click)="appStoreService.delToDo(todo.id)">Удалить</button>
     </span>
   </li>

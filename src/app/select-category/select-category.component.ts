@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AppStoreService} from '../services/app-store.service';
-import {Categories_E} from '../../categories_E';
+import {SelectedCategories_E} from '../../enums/SelectedCategories_E';
 
 @Component({
   selector: 'app-select-category',
   templateUrl: './select-category.component.html',
   styleUrls: ['./select-category.component.sass']
 })
-export class SelectCategoryComponent implements OnInit{
-  selected: Categories_E;
+export class SelectCategoryComponent{
+  selected: SelectedCategories_E = SelectedCategories_E.all;
 
   constructor(public appStoreService: AppStoreService) { }
 
@@ -18,9 +18,5 @@ export class SelectCategoryComponent implements OnInit{
       return;
     }
     this.appStoreService.setCategory(this.selected);
-  }
-
-  ngOnInit(): void {
-    this.selected = Categories_E.all;
   }
 }

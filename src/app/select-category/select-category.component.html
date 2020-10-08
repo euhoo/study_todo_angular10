@@ -1,5 +1,5 @@
 <span>Выбери категорию:</span>
 <select [(ngModel)]="selected" (change)="setCategory()">
 <!--  <option value="{{default}}" [selected]="true">Фильтрация по категории</option>-->
-  <option *ngFor="let cat of appStoreService.categoriesList" [selected]="cat === selected">{{cat}}</option>
+  <option *ngFor="let cat of appStoreService.categoriesList">{{cat}}</option>
 </select>

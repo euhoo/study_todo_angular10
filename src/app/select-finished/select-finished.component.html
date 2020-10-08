@@ -1,0 +1,4 @@
+<span>сделано:</span>
+<select [(ngModel)]="selected" (change)="setCategory()">
+  <option *ngFor="let cat of appStoreService.completedCategoriesList">{{cat}}</option>
+</select>
