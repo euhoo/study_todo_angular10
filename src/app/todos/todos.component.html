@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let todo of appStoreService.todos | todoFilter:appStoreService.selectedCategory">
+    <span>
+    {{todo.title}}: {{todo.text}}
+      <button (click)="appStoreService.delToDo(todo.id)">Удалить</button>
+    </span>
+  </li>
+</ul>
