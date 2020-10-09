@@ -12,8 +12,6 @@ export class TodoFilterPipe implements PipeTransform {
   }
 
   transform(list: TodoListItem[], selected: SelectedCategories_E, completed: CompletedCategories_E ): TodoListItem[] {
-    console.log(selected);
-    console.log(completed);
     const filteredByCategory = this.filterBySelectedCategory(list);
     return this.filterByCompleted(filteredByCategory);
   }
@@ -26,7 +24,6 @@ export class TodoFilterPipe implements PipeTransform {
   }
   filterByCompleted = (list: TodoListItem[]) => {
     const cat = this.appStoreService.completedCategory;
-    console.log(cat);
     if (cat === CompletedCategories_E.all || !cat) {
       return list;
     }
