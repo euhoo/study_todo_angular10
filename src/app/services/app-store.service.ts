@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {TodoListItem} from '../../types/Todo_T';
 import {categoriesList, existCategoriesList, SelectedCategories_E} from '../../enums/SelectedCategories_E';
 import {CompletedCategories_E, completedCategoriesList} from '../../enums/completed_E';
+import {LocalDataFactory} from '../factories/localDataFactory';
 
 
 const list: TodoListItem[] = [
@@ -36,14 +37,21 @@ export class AppStoreService implements AppStore {
   categoriesList = categoriesList;
   existCategoriesList = existCategoriesList;
   completedCategoriesList = completedCategoriesList;
-
+  constructor() {
+    this.todos = LocalDataFactory.getData<TodoListItem>('todos');
+  }
   addToDo = (todo: TodoListItem): void => {
-    this.todos = [todo, ...this.todos];
+    const todos = [todo, ...this.todos];
+    LocalDataFactory.setData<TodoListItem[]>('todos', todos);
+    this.todos = LocalDataFactory.getData<TodoListItem>('todos');
   }
 
   delToDo = (id: number): void => {
-    this.todos = this.todos.filter(todo => todo.id !== id);
+    const todos  = this.todos.filter(todo => todo.id !== id);
+    LocalDataFactory.setData<TodoListItem[]>('todos', todos);
+    this.todos = LocalDataFactory.getData<TodoListItem>('todos');
   }
+
   setCategory = (category: SelectedCategories_E ) => this.selectedCategory = category;
   resetCategory = () => this.selectedCategory = SelectedCategories_E.all;
   setCompletedCategory = (category: CompletedCategories_E) => this.completedCategory = category;

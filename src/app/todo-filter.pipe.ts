@@ -4,9 +4,7 @@ import {SelectedCategories_E} from '../enums/SelectedCategories_E';
 import {AppStoreService} from './services/app-store.service';
 import {CompletedCategories_E} from '../enums/completed_E';
 
-@Pipe({
-  name: 'todoFilter'
-})
+@Pipe({name: 'todoFilter'})
 export class TodoFilterPipe implements PipeTransform {
   constructor(private appStoreService: AppStoreService) {
   }
