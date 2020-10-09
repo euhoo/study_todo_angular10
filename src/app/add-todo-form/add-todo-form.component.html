@@ -1,0 +1,15 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-control-title" >
+    <label>Что сделать</label>
+    <input type="text" placeholder="описание" formControlName="title">
+    <div class="validation"></div>
+  </div>
+  <div class="form-control-category" >
+    <label>Категория</label>
+    <select formControlName="category">
+      <option *ngFor="let category of appStoreService.existCategoriesList">{{category}}</option>
+    </select>
+    <div class="validation"></div>
+  </div>
+  <button class="submit_btn" type="submit" [disabled]="form.invalid">Добавить</button>
+</form>

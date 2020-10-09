@@ -1,8 +1,10 @@
 <ul>
-  <li *ngFor="let todo of appStoreService.todos | todoFilter:appStoreService.selectedCategory:appStoreService.completedCategory">
-    <span>
+  <li
+    *ngFor="let todo of appStoreService.todos | todoFilter:appStoreService.selectedCategory:appStoreService.completedCategory">
+    <span [class.todo-completed]="checkIfCompleted(todo)">
     {{todo.title}}
-      <button (click)="appStoreService.delToDo(todo.id)">Удалить</button>
     </span>
+    <button (click)="appStoreService.delToDo(todo.id)" >Удалить</button>
+    <button (click)="appStoreService.completeTodo(todo.id)" [disabled]="checkIfCompleted(todo)">Выполнено</button>
   </li>
 </ul>

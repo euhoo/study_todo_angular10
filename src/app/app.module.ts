@@ -8,6 +8,7 @@ import { SelectCategoryComponent } from './select-category/select-category.compo
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TodoFilterPipe } from './todo-filter.pipe';
 import { SelectFinishedComponent } from './select-finished/select-finished.component';
+import { AddTodoFormComponent } from './add-todo-form/add-todo-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SelectFinishedComponent } from './select-finished/select-finished.compo
     AppTodoFiltersComponent,
     SelectCategoryComponent,
     TodoFilterPipe,
-    SelectFinishedComponent
+    SelectFinishedComponent,
+    AddTodoFormComponent
   ],
   imports: [
     BrowserModule,

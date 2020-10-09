@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {AppStoreService} from '../services/app-store.service';
 import {CompletedCategories_E} from '../../enums/completed_E';
 
@@ -13,7 +13,7 @@ export class SelectFinishedComponent{
 
   setCategory = () => {
     if (!this.selected) {
-      this.appStoreService.resetCategory();
+      this.appStoreService.resetCompletedCategory();
       return;
     }
     this.appStoreService.setCompletedCategory(this.selected);

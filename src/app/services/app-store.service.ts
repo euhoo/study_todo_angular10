@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TodoListItem} from '../../types/Todo_T';
-import {categoriesList, SelectedCategories_E} from '../../enums/SelectedCategories_E';
+import {categoriesList, existCategoriesList, SelectedCategories_E} from '../../enums/SelectedCategories_E';
 import {CompletedCategories_E, completedCategoriesList} from '../../enums/completed_E';
 
 
@@ -23,6 +23,7 @@ interface AppStore {
   setCategory: (category: SelectedCategories_E) => void;
   resetCategory: () => void;
   categoriesList: SelectedCategories_E[];
+  existCategoriesList: SelectedCategories_E[];
   completedCategoriesList: CompletedCategories_E[];
 
 }
@@ -33,6 +34,7 @@ export class AppStoreService implements AppStore {
   selectedCategory: SelectedCategories_E = SelectedCategories_E.all;
   completedCategory: CompletedCategories_E = CompletedCategories_E.all;
   categoriesList = categoriesList;
+  existCategoriesList = existCategoriesList;
   completedCategoriesList = completedCategoriesList;
 
   addToDo = (todo: TodoListItem): void => {
@@ -46,4 +48,8 @@ export class AppStoreService implements AppStore {
   resetCategory = () => this.selectedCategory = SelectedCategories_E.all;
   setCompletedCategory = (category: CompletedCategories_E) => this.completedCategory = category;
   resetCompletedCategory = () => this.completedCategory = CompletedCategories_E.all;
+
+  completeTodo = (id: number) => {
+    this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed: CompletedCategories_E.completed} : todo);
+  }
 }
