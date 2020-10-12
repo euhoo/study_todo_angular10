@@ -38,7 +38,7 @@ export class AppStoreService implements AppStore {
   categoriesList = categoriesList;
   existCategoriesList = existCategoriesList;
   completedCategoriesList = completedCategoriesList;
-  constructor(private http: HttpClient) {
+  constructor() {
     this.todos = LocalDataFactory.getData<TodoListItem>('todos');
   }
   addToDo = (todo: TodoListItem): void => {
@@ -61,7 +61,5 @@ export class AppStoreService implements AppStore {
   completeTodo = (id: number) => {
     this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed: CompletedCategories_E.completed} : todo);
   }
-  fetchTodos = () => {
 
-  }
 }

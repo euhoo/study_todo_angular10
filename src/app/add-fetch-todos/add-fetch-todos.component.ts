@@ -51,14 +51,14 @@ export class AddFetchTodosComponent implements OnInit, OnDestroy {
   }
 
   fetchTodos = () => {
-    this.http.get<FetchedTodoListItem[]>('https://jsonplaceholder.typicode.com/todos?_limit=3&_offset=14')
+    this.http.get<FetchedTodoListItem[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
       .pipe(
         delay(300),
         take(1),
         map(todos => todos.map(todo => (
-          {...todo,
+          {title: todo.title,
             category: SelectedCategories_E.important,
-            id: +`${Date.now()}${todo.id}`,
+            id: +`${Date.now()}${todo.id}`, // чтобы было уникальное id
             completed: todo.completed ? CompletedCategories_E.completed : CompletedCategories_E.notCompleted
           }
             ))),
