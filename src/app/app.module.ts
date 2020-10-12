@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TodoFilterPipe } from './todo-filter.pipe';
 import { SelectFinishedComponent } from './select-finished/select-finished.component';
 import { AddTodoFormComponent } from './add-todo-form/add-todo-form.component';
+import { AddFetchTodosComponent } from './add-fetch-todos/add-fetch-todos.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { AddTodoFormComponent } from './add-todo-form/add-todo-form.component';
     SelectCategoryComponent,
     TodoFilterPipe,
     SelectFinishedComponent,
-    AddTodoFormComponent
+    AddTodoFormComponent,
+    AddFetchTodosComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import {TodoListItem} from '../../types/Todo_T';
 import {categoriesList, existCategoriesList, SelectedCategories_E} from '../../enums/SelectedCategories_E';
 import {CompletedCategories_E, completedCategoriesList} from '../../enums/completed_E';
 import {LocalDataFactory} from '../factories/localDataFactory';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 const list: TodoListItem[] = [
@@ -37,7 +38,7 @@ export class AppStoreService implements AppStore {
   categoriesList = categoriesList;
   existCategoriesList = existCategoriesList;
   completedCategoriesList = completedCategoriesList;
-  constructor() {
+  constructor(private http: HttpClient) {
     this.todos = LocalDataFactory.getData<TodoListItem>('todos');
   }
   addToDo = (todo: TodoListItem): void => {
@@ -59,5 +60,8 @@ export class AppStoreService implements AppStore {
 
   completeTodo = (id: number) => {
     this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed: CompletedCategories_E.completed} : todo);
+  }
+  fetchTodos = () => {
+
   }
 }

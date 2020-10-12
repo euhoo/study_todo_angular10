@@ -2,5 +2,14 @@ import {SelectedCategories_E} from '../enums/SelectedCategories_E';
 import {CompletedCategories_E} from '../enums/completed_E';
 
 export type TodoListItem = {
-  id: number, title: string, completed: CompletedCategories_E, category: SelectedCategories_E
+  id: number,
+  title: string,
+  completed: CompletedCategories_E,
+  category: SelectedCategories_E
+};
+export type FetchedTodoListItem = {
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean
 };
